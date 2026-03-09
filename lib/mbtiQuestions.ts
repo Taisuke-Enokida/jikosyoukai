@@ -1,0 +1,411 @@
+export type MbtiPole = 'I' | 'E' | 'N' | 'S' | 'T' | 'F' | 'J' | 'P';
+
+export type MbtiDimension = 'IE' | 'SN' | 'TF' | 'JP';
+
+export type MbtiChoice = {
+  text: string;
+  pole: MbtiPole;
+  points: 1 | 2;
+};
+
+export type MbtiQuestion = {
+  id: string;
+  dimension: MbtiDimension;
+  prompt: string;
+  choices: MbtiChoice[];
+  intjChoiceIndex: number;
+  explanation: string;
+};
+
+export const mbtiQuestions: MbtiQuestion[] = [
+  {
+    id: 'q1',
+    dimension: 'IE',
+    prompt: '休日の朝、最初にやりたいことは？',
+    choices: [
+      { text: '1人で静かに予定と目標を整理する', pole: 'I', points: 2 },
+      { text: '友だちに連絡して今から集まる計画を立てる', pole: 'E', points: 2 },
+      { text: '近所で誰かに会えたら話すつもりで散歩する', pole: 'E', points: 1 },
+      { text: '家でゆっくり映画を観てエネルギー回復する', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは1人で思考を整えてから動く選択をしがちです。',
+  },
+  {
+    id: 'q2',
+    dimension: 'IE',
+    prompt: '会議で意見を出すとき、いちばん近いのは？',
+    choices: [
+      { text: '先に考えをまとめて、要点だけ話す', pole: 'I', points: 2 },
+      { text: 'その場で思いついたアイデアをどんどん話す', pole: 'E', points: 2 },
+      { text: '空気を見ながら短くコメントする', pole: 'E', points: 1 },
+      { text: 'チャットや資料に整理して共有する', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは即興より準備した論点を重視します。',
+  },
+  {
+    id: 'q3',
+    dimension: 'IE',
+    prompt: '大きなイベントの後、どう回復する？',
+    choices: [
+      { text: '1人時間を作って頭をクールダウンする', pole: 'I', points: 2 },
+      { text: 'そのまま二次会でさらに盛り上がる', pole: 'E', points: 2 },
+      { text: '少人数で感想を語り合う', pole: 'E', points: 1 },
+      { text: '音楽を聴きながら静かに帰る', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは社交後に単独での再充電を必要としやすいです。',
+  },
+  {
+    id: 'q4',
+    dimension: 'IE',
+    prompt: 'グループ課題で役割を選ぶなら？',
+    choices: [
+      { text: '設計や分析を担当し、集中して仕上げる', pole: 'I', points: 2 },
+      { text: '場を回しながら全員の意見を引き出す', pole: 'E', points: 2 },
+      { text: '雑談で雰囲気をなごませる', pole: 'E', points: 1 },
+      { text: '必要な箇所だけ手早くサポートする', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは構造化や深掘りが必要な役割に向きます。',
+  },
+  {
+    id: 'q5',
+    dimension: 'IE',
+    prompt: 'SNSの使い方として近いのは？',
+    choices: [
+      { text: '必要な情報を集める用途が中心', pole: 'I', points: 2 },
+      { text: '毎日たくさん投稿して交流する', pole: 'E', points: 2 },
+      { text: '気分でストーリーを頻繁に更新する', pole: 'E', points: 1 },
+      { text: '投稿は少ないが保存や検索をよく使う', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは自己発信より情報収集を優先しやすいです。',
+  },
+  {
+    id: 'q6',
+    dimension: 'IE',
+    prompt: '新しい分野を学ぶ最初の行動は？',
+    choices: [
+      { text: 'まず1人で調べて全体像をつかむ', pole: 'I', points: 2 },
+      { text: '詳しい人を集めて話しながら理解する', pole: 'E', points: 2 },
+      { text: '勉強会に参加して流れを把握する', pole: 'E', points: 1 },
+      { text: '資料を読み込んでノート化する', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは独学で体系化してから相談する傾向があります。',
+  },
+  {
+    id: 'q7',
+    dimension: 'IE',
+    prompt: '旅行スタイルで近いのは？',
+    choices: [
+      { text: '1人または少人数で静かに巡る', pole: 'I', points: 2 },
+      { text: '大人数でその場の勢いを楽しむ', pole: 'E', points: 2 },
+      { text: '現地で友だちを増やすのが目的', pole: 'E', points: 1 },
+      { text: '移動中に考え事をして過ごす', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは行動量より思考の余白を確保する旅を好みます。',
+  },
+  {
+    id: 'q8',
+    dimension: 'IE',
+    prompt: 'カフェでの過ごし方は？',
+    choices: [
+      { text: '1人で作業しながら思考を深める', pole: 'I', points: 2 },
+      { text: '知り合いと合流して長く雑談する', pole: 'E', points: 2 },
+      { text: '店員さんや周囲と会話を楽しむ', pole: 'E', points: 1 },
+      { text: '本を読みながら静かに過ごす', pole: 'I', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは環境を使って集中を作るのが得意です。',
+  },
+  {
+    id: 'q9',
+    dimension: 'SN',
+    prompt: '新企画を考えるとき、最初に見るのは？',
+    choices: [
+      { text: '将来の可能性とコンセプト', pole: 'N', points: 2 },
+      { text: '過去の実績と具体的な手順', pole: 'S', points: 2 },
+      { text: '現場で今すぐ使える小技', pole: 'S', points: 1 },
+      { text: '複数案の共通パターン', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは目先より長期ビジョンから設計します。',
+  },
+  {
+    id: 'q10',
+    dimension: 'SN',
+    prompt: '説明を受けると理解しやすい順番は？',
+    choices: [
+      { text: '目的と原理を先に聞きたい', pole: 'N', points: 2 },
+      { text: '手順を1つずつ順番に聞きたい', pole: 'S', points: 2 },
+      { text: '実物を触って覚えたい', pole: 'S', points: 1 },
+      { text: '全体マップを見て位置づけを知りたい', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは抽象から具体へ落とす理解を得意とします。',
+  },
+  {
+    id: 'q11',
+    dimension: 'SN',
+    prompt: '映画を観た後の感想で近いのは？',
+    choices: [
+      { text: 'テーマや伏線の意味を考察する', pole: 'N', points: 2 },
+      { text: '映像の迫力や演技の細部を語る', pole: 'S', points: 2 },
+      { text: '印象的なシーンを具体的に振り返る', pole: 'S', points: 1 },
+      { text: '作品全体のメッセージをまとめる', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは背後の構造や意味の読み解きを楽しみます。',
+  },
+  {
+    id: 'q12',
+    dimension: 'SN',
+    prompt: '問題が起きたとき最初にやることは？',
+    choices: [
+      { text: '根本原因のパターンを探る', pole: 'N', points: 2 },
+      { text: 'まず目の前の現象を1つずつ直す', pole: 'S', points: 2 },
+      { text: '直近の事例を再現して確認する', pole: 'S', points: 1 },
+      { text: '将来の再発条件を仮説化する', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは再発防止につながる抽象化を重視します。',
+  },
+  {
+    id: 'q13',
+    dimension: 'SN',
+    prompt: '5年後を考えるとき、近いのは？',
+    choices: [
+      { text: '理想の状態を逆算して今を設計する', pole: 'N', points: 2 },
+      { text: '今できることを少しずつ積み上げる', pole: 'S', points: 2 },
+      { text: '毎日の習慣を安定させることを優先する', pole: 'S', points: 1 },
+      { text: '変化シナリオを複数用意しておく', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは長期視点で戦略を組み立てる傾向があります。',
+  },
+  {
+    id: 'q14',
+    dimension: 'SN',
+    prompt: '読書の好みはどちらに近い？',
+    choices: [
+      { text: '思考実験や未来を描く本が好き', pole: 'N', points: 2 },
+      { text: '実用的で手順が明確な本が好き', pole: 'S', points: 2 },
+      { text: '写真や具体例が多い本が読みやすい', pole: 'S', points: 1 },
+      { text: '抽象モデルや理論書に惹かれる', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは概念を扱える素材に強く反応します。',
+  },
+  {
+    id: 'q15',
+    dimension: 'SN',
+    prompt: 'メモを取るときの癖は？',
+    choices: [
+      { text: '要点を構造化して図にする', pole: 'N', points: 2 },
+      { text: '時系列で事実を漏れなく残す', pole: 'S', points: 2 },
+      { text: '発言をそのまま書き写す', pole: 'S', points: 1 },
+      { text: 'キーワード同士の関係を線でつなぐ', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは情報を再利用しやすい形へ再構成します。',
+  },
+  {
+    id: 'q16',
+    dimension: 'SN',
+    prompt: 'お土産を選ぶ基準は？',
+    choices: [
+      { text: '相手の世界観に刺さるストーリー性', pole: 'N', points: 2 },
+      { text: '定番で失敗しない実用品', pole: 'S', points: 2 },
+      { text: '見た目や触り心地のわかりやすさ', pole: 'S', points: 1 },
+      { text: '意味や背景を語れるもの', pole: 'N', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは機能だけでなく概念的な価値も重視します。',
+  },
+  {
+    id: 'q17',
+    dimension: 'TF',
+    prompt: '友だちの悩み相談、最初にする反応は？',
+    choices: [
+      { text: '状況を分解して解決策を一緒に考える', pole: 'T', points: 2 },
+      { text: 'まず感情に寄り添って共感を伝える', pole: 'F', points: 2 },
+      { text: '励まし中心で気分を上げる', pole: 'F', points: 1 },
+      { text: '選択肢のメリットとデメリットを並べる', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは感情受容より問題解決を優先しやすいです。',
+  },
+  {
+    id: 'q18',
+    dimension: 'TF',
+    prompt: '大事な決断で重視するのは？',
+    choices: [
+      { text: '長期的な合理性と再現性', pole: 'T', points: 2 },
+      { text: '関わる人の気持ちと納得感', pole: 'F', points: 2 },
+      { text: 'その場の空気が荒れないこと', pole: 'F', points: 1 },
+      { text: '根拠データの一貫性', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは原則とロジックを軸に判断します。',
+  },
+  {
+    id: 'q19',
+    dimension: 'TF',
+    prompt: '議論が白熱したときの動きは？',
+    choices: [
+      { text: '論点を定義し直して整理する', pole: 'T', points: 2 },
+      { text: '全員が傷つかない着地点を探す', pole: 'F', points: 2 },
+      { text: '場の雰囲気を和らげる発言をする', pole: 'F', points: 1 },
+      { text: '前提条件のズレを指摘する', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは感情より構造の整合性を優先します。',
+  },
+  {
+    id: 'q20',
+    dimension: 'TF',
+    prompt: 'チーム評価を任されたら？',
+    choices: [
+      { text: '成果指標を揃えて公平に評価する', pole: 'T', points: 2 },
+      { text: '努力や人間関係への配慮を厚く見る', pole: 'F', points: 2 },
+      { text: '本人の気持ちを最優先に調整する', pole: 'F', points: 1 },
+      { text: '基準を事前公開して透明性を保つ', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは一貫したルール設計を重視します。',
+  },
+  {
+    id: 'q21',
+    dimension: 'TF',
+    prompt: 'トラブル対応で最初に確認するのは？',
+    choices: [
+      { text: '事実関係と原因の切り分け', pole: 'T', points: 2 },
+      { text: '関係者の不安や感情状態', pole: 'F', points: 2 },
+      { text: '謝罪の言い回しと配慮表現', pole: 'F', points: 1 },
+      { text: '再発防止策の実効性', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは原因分析を先に行うと力を発揮しやすいです。',
+  },
+  {
+    id: 'q22',
+    dimension: 'TF',
+    prompt: '買い物で迷ったときの決め手は？',
+    choices: [
+      { text: 'スペック比較とコスパ', pole: 'T', points: 2 },
+      { text: 'ブランドの雰囲気や好感度', pole: 'F', points: 2 },
+      { text: '店員さんとの相性の良さ', pole: 'F', points: 1 },
+      { text: '用途ごとの性能優先順位', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは感覚より評価軸を定めて判断します。',
+  },
+  {
+    id: 'q23',
+    dimension: 'TF',
+    prompt: '誰かがミスを謝ってきたときは？',
+    choices: [
+      { text: '再発防止の仕組みまで一緒に決める', pole: 'T', points: 2 },
+      { text: 'まずは気持ちを受け止めて安心させる', pole: 'F', points: 2 },
+      { text: '励まして次回に期待する', pole: 'F', points: 1 },
+      { text: '原因と対策を短く文書化する', pole: 'T', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは同じ失敗を防ぐ設計まで見ます。',
+  },
+  {
+    id: 'q24',
+    dimension: 'JP',
+    prompt: '旅行前の準備で近いのは？',
+    choices: [
+      { text: '日程表と予備プランを先に作る', pole: 'J', points: 2 },
+      { text: '当日の気分でルートを決める', pole: 'P', points: 2 },
+      { text: '行き先だけ決めてあとは流れ任せ', pole: 'P', points: 1 },
+      { text: '持ち物チェックリストを整える', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは不確実性を減らすために先に設計します。',
+  },
+  {
+    id: 'q25',
+    dimension: 'JP',
+    prompt: '締切のある課題に取り組むなら？',
+    choices: [
+      { text: '逆算スケジュールを引いて進める', pole: 'J', points: 2 },
+      { text: '締切直前の集中力で一気に仕上げる', pole: 'P', points: 2 },
+      { text: '思いついた順に着手して調整する', pole: 'P', points: 1 },
+      { text: '毎日の進捗を小さく管理する', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは計画の可視化で品質を安定させます。',
+  },
+  {
+    id: 'q26',
+    dimension: 'JP',
+    prompt: 'デスクまわりの管理は？',
+    choices: [
+      { text: '物の定位置ルールを決めて保つ', pole: 'J', points: 2 },
+      { text: '使う場所にその都度置いていく', pole: 'P', points: 2 },
+      { text: '必要になったらまとめて片づける', pole: 'P', points: 1 },
+      { text: 'フォルダ・ラベルで分類しておく', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは検索コストを下げる環境設計を好みます。',
+  },
+  {
+    id: 'q27',
+    dimension: 'JP',
+    prompt: '急な予定変更が入ったときは？',
+    choices: [
+      { text: '優先順位を組み直して再計画する', pole: 'J', points: 2 },
+      { text: 'その場の流れで柔軟に乗り切る', pole: 'P', points: 2 },
+      { text: '気分に合わせてタスクを入れ替える', pole: 'P', points: 1 },
+      { text: '影響範囲を確認して対策を決める', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは変化時ほど構造的に整理して対応します。',
+  },
+  {
+    id: 'q28',
+    dimension: 'JP',
+    prompt: '目標管理のやり方で近いのは？',
+    choices: [
+      { text: '月単位のKPIを決めて追跡する', pole: 'J', points: 2 },
+      { text: 'その時の直感でテーマを変えていく', pole: 'P', points: 2 },
+      { text: 'やりたいことを思いついたら追加する', pole: 'P', points: 1 },
+      { text: '達成条件を先に定義して動く', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは測定可能な指標を使って改善します。',
+  },
+  {
+    id: 'q29',
+    dimension: 'JP',
+    prompt: 'ToDoリストの使い方は？',
+    choices: [
+      { text: '優先度順に並べて上から処理する', pole: 'J', points: 2 },
+      { text: 'その時いちばん気分が乗るものをやる', pole: 'P', points: 2 },
+      { text: '新しいタスクをどんどん追加して回す', pole: 'P', points: 1 },
+      { text: '期限と工数で現実的に絞り込む', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは意思決定コストを減らす順序設計を行います。',
+  },
+  {
+    id: 'q30',
+    dimension: 'JP',
+    prompt: '朝のルーティンはどちら寄り？',
+    choices: [
+      { text: '毎日ほぼ同じ順番で始業する', pole: 'J', points: 2 },
+      { text: 'その日の気分で行動順を変える', pole: 'P', points: 2 },
+      { text: '時間があれば好きなことを優先する', pole: 'P', points: 1 },
+      { text: '最重要タスクから機械的に着手する', pole: 'J', points: 1 },
+    ],
+    intjChoiceIndex: 0,
+    explanation: 'INTJは再現性の高い習慣で成果を安定化させます。',
+  },
+];
